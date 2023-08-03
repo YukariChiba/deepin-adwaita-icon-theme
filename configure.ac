@@ -1,13 +1,13 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
 
-AC_INIT([adwaita-icon-theme], [41.0],
+AC_INIT([adwaita-icon-theme], [43],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=adwaita-icon-theme])
 AC_CANONICAL_HOST
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([index.theme.in])
 
-AM_INIT_AUTOMAKE([1.9 dist-xz no-dist-gzip tar-ustar foreign])
+AM_INIT_AUTOMAKE([1.9 dist-xz no-dist-gzip tar-pax foreign])
 
 PKG_PROG_PKG_CONFIG([0.19])
 

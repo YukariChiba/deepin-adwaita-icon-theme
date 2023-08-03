@@ -38,7 +38,7 @@ _HASH=^#
 NULL=
 ICON_SUBDIR=share\icons\Adwaita
 GDK_PIXBUF_MOD_VERSION=2.10.0
-ADWAITA_VERSION=41.0
+ADWAITA_VERSION=43
 ADWAITA_PC_FILES=adwaita-icon-theme.pc
 
 # Generate the NMake Makefile modules for the listing of subdirs for each icon size

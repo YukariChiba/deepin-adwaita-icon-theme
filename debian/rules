@@ -4,4 +4,29 @@
 	dh $@
 
 execute_after_dh_auto_clean:
+	dh_auto_clean --sourcedirectory=41
 	./debian/copyright.pl > debian/copyright
+
+execute_after_dh_auto_configure:
+	dh_auto_configure --sourcedirectory=41
+
+execute_after_dh_auto_build:
+	dh_auto_build --sourcedirectory=41
+
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/tmp
+	dh_auto_install --sourcedirectory=41 --destdir=debian/tmp-41
+
+execute_after_dh_install:
+	cp -al debian/tmp-41 debian/adwaita-icon-theme-41
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/16x16
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/22x22
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/32x32
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/256x256
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/512x512
+	rm -fr debian/adwaita-icon-theme-41/usr/share/icons/Adwaita/cursors
+	./debian/move-subset.py \
+		--icon-names-from-file=debian/legacy-icons-41.txt \
+		--icon-names-from-file=debian/removed-icons-41.txt \
+		debian/adwaita-icon-theme-41 \
+		debian/adwaita-icon-theme

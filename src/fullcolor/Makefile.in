@@ -425,9 +425,11 @@ install-data-local:
 		for file in `cd $(top_srcdir)/$(SVGOUTDIR)/$$size && find . -name "*.png"`; do \
 			context="`dirname $$file`"; \
 			$(mkdir_p) $(DESTDIR)$(themedir)/$$size/$$context; \
-			$(install_sh_DATA) $(top_srcdir)/$(SVGOUTDIR)/$$size/$$file $(DESTDIR)$(themedir)/$$size/$$file; \
+			$(install_sh_DATA) $(top_srcdir)/$(SVGOUTDIR)/$$size/$$file $(DESTDIR)$(themedir)/$$size/$$file & \
 		done; \
-	done;
+		wait; \
+	done; \
+	wait
 
 uninstall-local:
 	for size in $(render_sizes); do \
